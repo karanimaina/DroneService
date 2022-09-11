@@ -17,7 +17,7 @@ import javax.validation.constraints.Size;
 @Getter
 @Setter
 @NoArgsConstructor
-public class drone {
+public class Drone {
     @Size(min = 3,max = 100)
     private  String serialNo;
     @Enumerated(EnumType.STRING)
