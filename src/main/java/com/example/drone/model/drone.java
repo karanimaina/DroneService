@@ -9,13 +9,13 @@ import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.Table;
 import javax.validation.constraints.DecimalMax;
+import javax.validation.constraints.Max;
 import javax.validation.constraints.Size;
 
 @Table
 @AllArgsConstructor
 @Getter
 @Setter
-=
 @NoArgsConstructor
 public class drone {
     @Size(min = 3,max = 100)
@@ -28,5 +28,4 @@ public class drone {
     private int batteryPercentage;
     @Enumerated(EnumType.STRING)
     private DroneState state;
-
 }
