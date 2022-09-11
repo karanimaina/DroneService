@@ -11,8 +11,7 @@ import javax.persistence.*;
 @Getter
 @Setter
 @Builder
-public class Delivery {
-    @Id
+public class Delivery extends  BaseEntity {
     @ManyToOne
     private Drone drone;
     @Enumerated(EnumType.STRING)

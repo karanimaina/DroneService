@@ -13,7 +13,7 @@ import javax.persistence.Table;
 @Table
 @NoArgsConstructor
 @AllArgsConstructor
-public class DeliveryLoad {
+public class DeliveryLoad extends  {
     @ManyToOne
     private Drone drone;
     @Enumerated (EnumType.STRING)
