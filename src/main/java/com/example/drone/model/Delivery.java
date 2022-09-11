@@ -12,9 +12,12 @@ import javax.persistence.*;
 @Setter
 @Builder
 public class Delivery {
+    @Id
     @ManyToOne
     private Drone drone;
     @Enumerated(EnumType.STRING)
     private DeliveryStatus deliveryStatus;
+
     private double loadWeight;
+
 }
