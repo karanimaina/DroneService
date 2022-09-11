@@ -1,11 +1,13 @@
 package com.example.drone.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import java.beans.JavaBean;
 
 @Getter
 @Setter
@@ -13,10 +15,12 @@ import javax.persistence.Table;
 @Table
 @NoArgsConstructor
 @AllArgsConstructor
-public class DeliveryLoad extends  {
+public class DeliveryLoad extends BaseEntity {
     @ManyToOne
-    private Drone drone;
-    @Enumerated (EnumType.STRING)
-    private DeliveryStatus deliveryStatus;
-    private double loadWeight = 0;
+    private  Medicine medicine;
+    private int count;
+    @ManyToOne
+    @JsonIgnore
+    private Delivery delivery
+
 }

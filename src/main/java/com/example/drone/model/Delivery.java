@@ -16,7 +16,6 @@ public class Delivery extends  BaseEntity {
     private Drone drone;
     @Enumerated(EnumType.STRING)
     private DeliveryStatus deliveryStatus;
-
     private double loadWeight;
 
 }
