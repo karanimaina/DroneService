@@ -21,6 +21,5 @@ public class DeliveryLoad extends BaseEntity {
     private int count;
     @ManyToOne
     @JsonIgnore
-    private Delivery delivery
-
+    private Delivery delivery;
 }
