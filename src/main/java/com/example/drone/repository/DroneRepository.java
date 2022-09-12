@@ -10,7 +10,7 @@ import java.util.Optional;
 
 public interface DroneRepository  extends JpaRepository<Drone,Long> {
     List<Drone> findAllByStateAndSoftDeleteFalse(DroneState droneState, Pageable pageable);
-    Optional<Drone>findTopBySerialNoAndSoftDeleteFalse(long id);
+    Optional<Drone>findTopBySerialNoAndSoftDeleteFalse(String id);
     Optional<Drone>findByIdAndSoftDeleteFalse(long id);
     List<Drone>findAllBySoftDeleteFalse ();
 

@@ -6,6 +6,7 @@ import com.example.drone.model.Drone;
 import com.example.drone.repository.DeliveryRepository;
 import com.example.drone.repository.DroneRepository;
 import com.example.drone.repository.MedicineRepository;
+import com.example.drone.service.exception.ItemAlreadyExistException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -19,7 +20,11 @@ public class DroneServiceImpl implements  DroneService{
     private final MedicineRepository medicineRepository;
     @Override
     public Drone registerDrone(Drone drone) {
-        return null;
+       Drone duplicate  = droneRepository.findTopBySerialNoAndSoftDeleteFalse(drone.getSerialNo()).orElse(null);
+       if (duplicate!= null){
+           throw  new ItemAlreadyExistException("Drone exists by serial number");
+       }
+
     }
 
     @Override
