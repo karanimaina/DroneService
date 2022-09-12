@@ -12,7 +12,7 @@ import java.beans.JavaBean;
 @Getter
 @Setter
 @Builder
-@Table
+@Table(name="tb_delivery_load")
 @NoArgsConstructor
 @AllArgsConstructor
 public class DeliveryLoad extends BaseEntity {

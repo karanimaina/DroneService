@@ -1,11 +1,17 @@
 package com.example.drone.model;
 
 import com.example.drone.contants.DroneState;
+import lombok.*;
 
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 
+@Entity
+@Table(name="tb_drone_audit")
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
+@Builder
 public class DroneAudit extends  BaseEntity{
     @ManyToOne
     private Drone drone;

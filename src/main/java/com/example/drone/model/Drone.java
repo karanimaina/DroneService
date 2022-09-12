@@ -14,7 +14,7 @@ import javax.validation.constraints.DecimalMax;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Size;
 
-@Table
+@Table(name="tb_drone")
 @AllArgsConstructor
 @Getter
 @Setter
