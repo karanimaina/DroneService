@@ -4,16 +4,19 @@ import com.example.drone.dto.LoadDroneDto;
 import com.example.drone.model.Delivery;
 import com.example.drone.model.DeliveryLoad;
 import com.example.drone.model.Drone;
+import com.example.drone.model.DroneAudit;
 import com.example.drone.service.DroneAuditService;
 import com.example.drone.service.DroneService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Mono;
 import reactor.core.scheduler.Schedulers;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -73,16 +76,30 @@ public class Controller {
         }).publishOn (Schedulers.boundedElastic ());
     }
     @GetMapping("/check/percentage")
-    public Mono<ResponseEntity<UniversalResponse>> checkPercentage(@RequestParam int droneId){
-        return Mono.fromCallable (()-> {
-            int batteryPerc= droneService.checkDronePercentage (droneId);
-            UniversalResponse response= UniversalResponse.builder()
-                    .status (200)
-                    .message ("Battery percentage")
-                    .data (Map.of("battery", batteryPerc))
+    public Mono<ResponseEntity<UniversalResponse>> checkPercentage(@RequestParam int droneId) {
+        return Mono.fromCallable(() -> {
+            int batteryPerc = droneService.checkDronePercentage(droneId);
+            UniversalResponse response = UniversalResponse.builder()
+                    .status(200)
+                    .message("Battery percentage")
+                    .data(Map.of("battery", batteryPerc))
                     .build();
-            return ResponseEntity.ok ().body (response);
-        }).publishOn (Schedulers.boundedElastic ());
-    }
+            return ResponseEntity.ok().body(response);
+        }).publishOn(Schedulers.boundedElastic());
+        @GetMapping("/audit/logs")
+        public Mono<ResponseEntity<UniversalResponse>> getDroneAuditLogs ( @RequestParam long droneId,
+        @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") Date startDate,
+        @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") Date endDate){
+            return Mono.fromCallable(() -> {
+                List<DroneAudit> droneAudits = droneAuditService.getDroneAuditByTimeRange(droneId, startDate, endDate);
+                UniversalResponse response = UniversalResponse.builder()
+                        .status(200)
+                        .message("Drone Audit list")
+                        .data(droneAudits)
+                        .build();
+                return ResponseEntity.ok().body(response);
+            }).publishOn(Schedulers.boundedElastic());
+        }
 
-}
+    }}
+
