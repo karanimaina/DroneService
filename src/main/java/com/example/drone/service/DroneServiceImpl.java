@@ -3,6 +3,7 @@ package com.example.drone.service;
 import com.example.drone.model.Delivery;
 import com.example.drone.model.DeliveryLoad;
 import com.example.drone.model.Drone;
+import com.example.drone.repository.DeliveryRepository;
 import com.example.drone.repository.DroneRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Pageable;
@@ -13,6 +14,8 @@ import java.util.List;
 @RequiredArgsConstructor
 public class DroneServiceImpl implements  DroneService{
     private final DroneRepository droneRepository;
+    private final DeliveryRepository deliveryRepository;
+
     @Override
     public Drone registerDrone(Drone drone) {
         return null;
