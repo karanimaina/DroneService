@@ -1,0 +1,30 @@
+
+
+spring:
+
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: false
+    database-platform: org.hibernate.dialect.H2Dialect
+    properties:
+      #      hibernate:
+      #        session:
+      #          events:
+      #            log:
+      #              LOG_QUERIES_SLOWER_THAN_MS: 3
+      #        hbm2ddl:
+      #          import: data.sql
+      generate_statistics: false
+    defer-datasource-initialization: true
+  datasource:
+    driver-class-name: org.h2.Driver
+    username: sa
+    password: password
+  #    url: jdbc:h2:file:data/testdb
+  #
+  sql:
+    init:
+      mode: always
+
+
