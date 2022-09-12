@@ -1,5 +1,8 @@
 package com.example.drone;
 
+import com.example.drone.dto.LoadDroneDto;
+import com.example.drone.model.Delivery;
+import com.example.drone.model.DeliveryLoad;
 import com.example.drone.model.Drone;
 import com.example.drone.service.DroneAuditService;
 import com.example.drone.service.DroneService;
@@ -7,11 +10,12 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Mono;
-import reactor.core.scheduler.Scheduler;
 import reactor.core.scheduler.Schedulers;
 
+import java.util.List;
+
 @RestController
-@RequestMapping
+@RequestMapping("/api/v1/drone")
 @RequiredArgsConstructor
 public class Controller {
     private final DroneService droneService;
@@ -27,6 +31,31 @@ public class Controller {
                     .build();
            return ResponseEntity.ok(response);
         }).publishOn(Schedulers.boundedElastic());
+    }
+    @PostMapping("/load/drone")
+    public Mono<ResponseEntity<UniversalResponse>>loadDrone(LoadDroneDto loadDroneDto){
+        return  Mono.fromCallable(() -> {
+            Delivery delivery = droneService.loadDrone(loadDroneDto.getDroneId(), loadDroneDto.getMedicineId());
+            UniversalResponse response = UniversalResponse.builder()
+                    .status(200)
+                    .message("loaded succesfully")
+                    .data(delivery)
+                    .build();
+            return  ResponseEntity.ok(response);
+        }).publishOn(Schedulers.boundedElastic())
+    }
+
+    @GetMapping("/loaded/medication")
+    public Mono<ResponseEntity<UniversalResponse>>getLoadedMedication(@RequestParam long droneId){
+        List<DeliveryLoad>deliveryLoad  =droneService.checkLoadedMedication(droneId);
+        UniversalResponse response = UniversalResponse.builder()
+                .status(200)
+                .message("loaded Medication")
+                .data(deliveryLoad)
+                .build();
+       return  ResponseEntity.ok().body(response)
+
+    })
     }
 
 }
