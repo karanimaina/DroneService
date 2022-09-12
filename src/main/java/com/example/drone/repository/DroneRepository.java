@@ -14,4 +14,5 @@ public interface DroneRepository  extends JpaRepository<Drone,Long> {
     Optional<Drone>findByIdAndSoftDeleteFalse(long id);
     List<Drone>findAllBySoftDelete();
 
+
 }
