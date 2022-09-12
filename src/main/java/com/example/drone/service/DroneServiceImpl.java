@@ -11,15 +11,14 @@ import com.example.drone.repository.DeliveryLoadRepository;
 import com.example.drone.repository.DeliveryRepository;
 import com.example.drone.repository.DroneRepository;
 import com.example.drone.repository.MedicineRepository;
-import com.example.drone.service.exception.IllegalOperationException;
-import com.example.drone.service.exception.ItemAlreadyExistException;
+import com.example.drone.exceptions.IllegalOperationException;
+import com.example.drone.exceptions.ItemAlreadyExistException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
