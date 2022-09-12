@@ -94,19 +94,19 @@ public class DroneServiceImpl implements  DroneService{
         delivery.setLoadWeight (delivery.getLoadWeight ()+ medicine.getWeight ());
         return deliveryRepository.save (delivery);
     }
-//    /**
-//     *
-//     * @param droneId drone id to for loaded medicines
-//     * @return A list of loaded medicines int the drone
-//     */
-//    @Override
-//    public List<DeliveryLoad> checkLoadedMedication(long droneId) {
-//        //check if drone exists
-//        Drone drone= droneRepository.findByIdAndSoftDeleteFalse (droneId).orElse (null);
-//        if(drone== null){
-//            throw new ItemNotFoundException ("Drone does not exist");
-//        }
-//        // check if drone is in load state
+    /**
+     *
+     * @param droneId drone id to for loaded medicines
+     * @return A list of loaded medicines int the drone
+     */
+    @Override
+    public List<DeliveryLoad> checkLoadedMedication(long droneId) {
+        //check if drone exists
+        Drone drone= droneRepository.findByIdAndSoftDeleteFalse (droneId).orElse (null);
+        if(drone== null){
+            throw new ItemNotFoundException ("Drone does not exist");
+        }
+        // check if drone is in load state
 //        if(!(drone.getState ()==DroneState.LOADING || drone.getState ()==DroneState.DELIVERING))
 //            throw new IllegalStateException ("Drone is not in loading or delivering state");
 //        return deliveryLoadRepository.checkLoadedMedicationOnDrone (droneId);
