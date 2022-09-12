@@ -1,5 +1,6 @@
 package com.example.drone.model;
 
+import com.example.drone.contants.DroneModel;
 import com.example.drone.contants.DroneState;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -22,7 +23,7 @@ public class Drone {
     @Size(min = 3,max = 100)
     private  String serialNo;
     @Enumerated(EnumType.STRING)
-    private String model;
+    private DroneModel model;
     @DecimalMax(value = "500")
     private String weightLimit;
     @Max(value = 100)

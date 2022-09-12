@@ -4,4 +4,6 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.ManyToOne;
-public class DeliveryStatus {}
+public enum DeliveryStatus {
+    LOADING,  DELIVERING, DELIVERED, RETURNING
+}
