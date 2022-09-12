@@ -25,7 +25,7 @@ public class Drone extends  BaseEntity {
     @Enumerated(EnumType.STRING)
     private DroneModel model;
     @DecimalMax(value = "500")
-    private String weightLimit;
+    private double weightLimit;
     @Max(value = 100)
     private int batteryPercentage;
     @Enumerated(EnumType.STRING)

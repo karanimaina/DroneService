@@ -62,26 +62,28 @@ public class DroneServiceImpl implements  DroneService{
             loadingDelivery=deliveryRepository.save (loadingDelivery);
         }
         // check if medicine load exceeds current load on drone
-        double weightAfterLoad= drone.getWeightLimit ()-loadingDelivery.getLoadWeight ();
+        double weightAfterLoad= drone.getWeightLimit ()- loadingDelivery.getLoadWeight ();
         if(weightAfterLoad<0){
             throw  new IllegalOperationException ("Medicine load exceed Drone max limit ");
         }
         //load delivery into drone
         return loadDeliveryLoadIntoDrone (loadingDelivery, medicine);
     }
-//    private Delivery loadDeliveryLoadIntoDrone(Delivery delivery,Medicine medicine){
-//        //add medicine to delivery load
-//        DeliveryLoad deliveryLoad= deliveryLoadRepository.findDeliveryLoadByDeliveryIdAndMedicineIdAndSoftDeleteFalse (delivery.getId (),medicine.getId ())
-//                .orElse (null);
-//        if(deliveryLoad!=null){
-//            deliveryLoad.setCount (deliveryLoad.getCount ()+1);
-//        }else{
-//            deliveryLoad= DeliveryLoad.builder ()
-//                    .delivery (delivery)
-//                    .medicine (medicine)
-//                    .count (1)
-//                    .build ();
-//        }
+
+
+    private Delivery loadDeliveryLoadIntoDrone(Delivery delivery,Medicine medicine){
+        //add medicine to delivery load
+        DeliveryLoad deliveryLoad= deliveryLoadRepository.findDeliveryLoadByDeliveryIdAndMedicineIdAndSoftDeleteFalse (delivery.getId (),medicine.getId ())
+                .orElse (null);
+        if(deliveryLoad!=null){
+            deliveryLoad.setCount (deliveryLoad.getCount ()+1);
+        }else{
+            deliveryLoad= DeliveryLoad.builder ()
+                    .delivery (delivery)
+                    .medicine (medicine)
+                    .count (1)
+                    .build ();
+        }
 //        Drone drone= delivery.getDrone ();
 //        //change drone status to loading
 //        if(drone.getState ()!= DroneState.LOADING) {
