@@ -7,6 +7,7 @@ import com.example.drone.model.Delivery;
 import com.example.drone.model.DeliveryLoad;
 import com.example.drone.model.Drone;
 import com.example.drone.model.Medicine;
+import com.example.drone.repository.DeliveryLoadRepository;
 import com.example.drone.repository.DeliveryRepository;
 import com.example.drone.repository.DroneRepository;
 import com.example.drone.repository.MedicineRepository;
@@ -26,6 +27,7 @@ public class DroneServiceImpl implements  DroneService{
     private final DroneRepository droneRepository;
     private final DeliveryRepository deliveryRepository;
     private final MedicineRepository medicineRepository;
+    private final DeliveryLoadRepository deliveryLoadRepository;
     @Override
     public Drone registerDrone(Drone drone) {
        Drone duplicate  = droneRepository.findTopBySerialNoAndSoftDeleteFalse(drone.getSerialNo()).orElse(null);
