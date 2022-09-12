@@ -15,6 +15,8 @@ public class DroneAuditServiceImpl implements DroneAuditService {
     private final DroneAuditRepository droneAuditRepository;
     private final DroneCommunicationService droneCommunicationService;
     private final DroneRepository droneRepository;
+
+    @A
     @Override
     public void checkDronePercentages() {
     }
