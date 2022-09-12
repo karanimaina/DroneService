@@ -34,17 +34,20 @@ public class DroneServiceImpl implements  DroneService{
     @Transactional
     @Override
     public Delivery loadDrone(long droneId, long medicineId) {
-      Drone drone = droneRepository.findByIdAndSoftDeleteFalse(droneId).orElse(null);
-        if (drone==null)
+        Drone drone = droneRepository.findByIdAndSoftDeleteFalse(droneId).orElse(null);
+        if (drone == null)
             throw new ItemNotFoundException("Drone not found");
+        //check drone for percentage levels
+        if (drone.getBatteryPercentage()<25){
+    throw new IllegalOperationException("cannot load drone , battery percentage is less than 25%");
 
+}
         //check if medicine with given id exists
-Medicine medicine = medicineRepository.findMedicineByIdAndSoftDeleteFalse(medicineId).orElse(null);
-        if (medicine == null){
+        Medicine medicine = medicineRepository.findMedicineByIdAndSoftDeleteFalse(medicineId).orElse(null);
+        if (medicine == null)
             throw new ItemNotFoundException("medicine not found");
-            //check drone for percentage levels
-            if ()
-        }
+
+
 
     }
 
