@@ -2,11 +2,9 @@ package com.example.drone.model;
 
 import com.example.drone.contants.DroneModel;
 import com.example.drone.contants.DroneState;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
+import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.Table;
@@ -14,12 +12,14 @@ import javax.validation.constraints.DecimalMax;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Size;
 
+@Entity
 @Table(name="tb_drone")
 @AllArgsConstructor
+@NoArgsConstructor
 @Getter
 @Setter
-@NoArgsConstructor
-public class Drone {
+@Builder
+public class Drone extends  BaseEntity {
     @Size(min = 3,max = 100)
     private  String serialNo;
     @Enumerated(EnumType.STRING)

@@ -1,5 +1,6 @@
 package com.example.drone.model;
 
+import com.example.drone.contants.DeliveryStatus;
 import lombok.*;
 
 import javax.persistence.*;
