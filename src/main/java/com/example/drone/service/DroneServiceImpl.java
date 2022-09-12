@@ -84,16 +84,16 @@ public class DroneServiceImpl implements  DroneService{
                     .count (1)
                     .build ();
         }
-//        Drone drone= delivery.getDrone ();
-//        //change drone status to loading
-//        if(drone.getState ()!= DroneState.LOADING) {
-//            drone.setState (DroneState.LOADING);
-//            droneRepository.save (drone);
-//        }
-//        deliveryLoadRepository.save (deliveryLoad);
-//        delivery.setLoadWeight (delivery.getLoadWeight ()+ medicine.getWeight ());
-//        return deliveryRepository.save (delivery);
-//    }
+        Drone drone= delivery.getDrone ();
+        //change drone status to loading
+        if(drone.getState ()!= DroneState.LOADING) {
+            drone.setState (DroneState.LOADING);
+            droneRepository.save (drone);
+        }
+        deliveryLoadRepository.save (deliveryLoad);
+        delivery.setLoadWeight (delivery.getLoadWeight ()+ medicine.getWeight ());
+        return deliveryRepository.save (delivery);
+    }
 //    /**
 //     *
 //     * @param droneId drone id to for loaded medicines
