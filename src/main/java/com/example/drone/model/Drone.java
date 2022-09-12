@@ -1,5 +1,6 @@
 package com.example.drone.model;
 
+import com.example.drone.contants.DroneState;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

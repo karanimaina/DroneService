@@ -6,7 +6,7 @@ import lombok.Getter;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 @Getter
-public class Medicine {
+public class Medicine extends BaseEntity {
     @NotBlank(message ="Name cannot be null")
     @Pattern(regexp = "[_A-Z0-9a-z]+(_[A-Za-z0-9]+)*$")
     private String name;

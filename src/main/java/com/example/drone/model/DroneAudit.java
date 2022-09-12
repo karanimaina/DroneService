@@ -1,5 +1,7 @@
 package com.example.drone.model;
 
+import com.example.drone.contants.DroneState;
+
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.ManyToOne;
