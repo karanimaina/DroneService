@@ -31,6 +31,7 @@ public class DroneAuditServiceImpl implements DroneAuditService {
     public void checkDronePercentages() {
         Mono.fromRunnable (()-> droneRepository.findAllBySoftDeleteFalse ()
                 .parallelStream ()
+
                 .forEach (drone -> {
                     int batteryPerc= droneCommunicationService.getDronePercentage (drone);
                     DroneState droneState= droneCommunicationService.getDroneState (drone);
