@@ -113,18 +113,18 @@ public class DroneServiceImpl implements  DroneService{
     }
 
     @Override
-//    public List<Drone> checkAvailableDrones(Pageable pageable) {
-//        return droneRepository.findAllByStateAndSoftDeleteFalse (DroneState.IDLE, pageable);
-//    }
-//
-//    @Override
-//    public int checkDronePercentage(long droneId) {
-//        //check if drone exists
-//        Drone drone= droneRepository.findByIdAndSoftDeleteFalse (droneId).orElse (null);
-//        if(drone== null){
-//            throw new ItemNotFoundException ("Drone does not exist");
-//        }
-//        return drone.getBatteryPercentage ();
-//    }
+    public List<Drone> checkAvailableDrones(Pageable pageable) {
+        return droneRepository.findAllByStateAndSoftDeleteFalse (DroneState.IDLE, pageable);
+    }
+
+    @Override
+    public int checkDronePercentage(long droneId) {
+        //check if drone exists
+        Drone drone= droneRepository.findByIdAndSoftDeleteFalse (droneId).orElse (null);
+        if(drone== null){
+            throw new ItemNotFoundException ("Drone does not exist");
+        }
+        return drone.getBatteryPercentage ();
+    }
 }
 
