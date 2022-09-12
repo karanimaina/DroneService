@@ -5,6 +5,7 @@ import com.example.drone.model.DeliveryLoad;
 import com.example.drone.model.Drone;
 import com.example.drone.repository.DeliveryRepository;
 import com.example.drone.repository.DroneRepository;
+import com.example.drone.repository.MedicineRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -15,7 +16,7 @@ import java.util.List;
 public class DroneServiceImpl implements  DroneService{
     private final DroneRepository droneRepository;
     private final DeliveryRepository deliveryRepository;
-
+    private final MedicineRepository medicineRepository;
     @Override
     public Drone registerDrone(Drone drone) {
         return null;
