@@ -38,12 +38,12 @@ public class DroneAuditServiceImpl implements DroneAuditService {
                     drone.setBatteryPercentage (batteryPerc);
                     drone.setState (droneState);
                     droneRepository.save (drone);
-
                     DroneAudit audit= DroneAudit.builder()
                             .drone (drone)
                             .batteryPercentage (batteryPerc)
                             .build();
                     audit.setDroneState (droneState);
+
                     droneAuditRepository.save (audit);
                 })).subscribeOn (Schedulers.fromExecutor (executor)).subscribe ();
     }
