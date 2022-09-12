@@ -43,12 +43,13 @@ public class DroneAuditServiceImpl implements DroneAuditService {
                             .batteryPercentage (batteryPerc)
                             .build();
                     audit.setDroneState (droneState);
-
                     droneAuditRepository.save (audit);
                 })).subscribeOn (Schedulers.fromExecutor (executor)).subscribe ();
     }
     @Override
     public List<DroneAudit> getDroneAuditByTimeRange(long droneId, Date startDate, Date endDate) {
+
+
         Drone drone = droneRepository.findByIdAndSoftDeleteFalse(droneId).orElse(null);
         if (drone == null)
              throw new ItemNotFoundException("Drone not Found");
