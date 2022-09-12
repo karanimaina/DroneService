@@ -10,7 +10,9 @@ public class DroneCommunicationServiceMockImpl  implements DroneCommunicationSer
     }
 
     @Override
-    public DroneState getDroneSate(Drone drone) {
-        return drone.getState();
+    public DroneState getDroneState(Drone drone) {
+        return null;
     }
+
+
 }
