@@ -61,14 +61,14 @@ public class DroneServiceImpl implements  DroneService{
                     .drone (drone).build ();
             loadingDelivery=deliveryRepository.save (loadingDelivery);
         }
-//        // check if medicine load exceeds current load on drone
-//        double weightAfterLoad= drone.getWeightLimit ()-loadingDelivery.getLoadWeight ();
-//        if(weightAfterLoad<0){
-//            throw  new IllegalOperationException ("Medicine load exceed Drone max limit ");
-//        }
-//        //load delivery into drone
-//        return loadDeliveryLoadIntoDrone (loadingDelivery, medicine);
-//    }
+        // check if medicine load exceeds current load on drone
+        double weightAfterLoad= drone.getWeightLimit ()-loadingDelivery.getLoadWeight ();
+        if(weightAfterLoad<0){
+            throw  new IllegalOperationException ("Medicine load exceed Drone max limit ");
+        }
+        //load delivery into drone
+        return loadDeliveryLoadIntoDrone (loadingDelivery, medicine);
+    }
 //    private Delivery loadDeliveryLoadIntoDrone(Delivery delivery,Medicine medicine){
 //        //add medicine to delivery load
 //        DeliveryLoad deliveryLoad= deliveryLoadRepository.findDeliveryLoadByDeliveryIdAndMedicineIdAndSoftDeleteFalse (delivery.getId (),medicine.getId ())
