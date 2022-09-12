@@ -7,6 +7,9 @@ import com.example.drone.model.Drone;
 import com.example.drone.service.DroneAuditService;
 import com.example.drone.service.DroneService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.boot.autoconfigure.data.web.SpringDataWebProperties;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Mono;
@@ -47,15 +50,27 @@ public class Controller {
 
     @GetMapping("/loaded/medication")
     public Mono<ResponseEntity<UniversalResponse>>getLoadedMedication(@RequestParam long droneId){
-        List<DeliveryLoad>deliveryLoad  =droneService.checkLoadedMedication(droneId);
+    return Mono.fromCallable(() ->{List<DeliveryLoad>deliveryLoad  =droneService.checkLoadedMedication(droneId);
         UniversalResponse response = UniversalResponse.builder()
                 .status(200)
                 .message("loaded Medication")
                 .data(deliveryLoad)
                 .build();
        return  ResponseEntity.ok().body(response)
-
-    })
+    }).publishOn(Schedulers.boundedElastic());
+    }
+    @GetMapping("/available/drone")
+    public Mono<ResponseEntity<UniversalResponse>> getAvailableDrone(@RequestParam int size, @RequestParam int page){
+        return Mono.fromCallable (()-> {
+            Pageable pageable= PageRequest.of (page,size);
+            List<Drone> availableDrones= droneService.checkAvailableDrones (pageable);
+            UniversalResponse response= UniversalResponse.builder()
+                    .status (200)
+                    .message ("Available drones")
+                    .data (availableDrones)
+                    .build();
+            return ResponseEntity.ok ().body (response);
+        }).publishOn (Schedulers.boundedElastic ());
     }
 
 }
