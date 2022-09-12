@@ -107,12 +107,12 @@ public class DroneServiceImpl implements  DroneService{
             throw new ItemNotFoundException ("Drone does not exist");
         }
         // check if drone is in load state
-//        if(!(drone.getState ()==DroneState.LOADING || drone.getState ()==DroneState.DELIVERING))
-//            throw new IllegalStateException ("Drone is not in loading or delivering state");
-//        return deliveryLoadRepository.checkLoadedMedicationOnDrone (droneId);
-//    }
-//
-//    @Override
+        if(!(drone.getState ()==DroneState.LOADING || drone.getState ()==DroneState.DELIVERING))
+            throw new IllegalStateException ("Drone is not in loading or delivering state");
+        return deliveryLoadRepository.checkLoadedMedicationOnDrone (droneId);
+    }
+
+    @Override
 //    public List<Drone> checkAvailableDrones(Pageable pageable) {
 //        return droneRepository.findAllByStateAndSoftDeleteFalse (DroneState.IDLE, pageable);
 //    }
