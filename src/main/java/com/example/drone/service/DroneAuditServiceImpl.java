@@ -5,7 +5,7 @@ import com.example.drone.model.Drone;
 import com.example.drone.model.DroneAudit;
 import com.example.drone.repository.DroneAuditRepository;
 import com.example.drone.repository.DroneRepository;
-import com.example.drone.service.exceptions.ItemNotFoundException;
+import com.example.drone.exceptions.ItemNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -55,6 +55,5 @@ public class DroneAuditServiceImpl implements DroneAuditService {
         if (drone == null)
              throw new ItemNotFoundException("Drone not Found");
        return  droneAuditRepository.findAllByDroneIdAndCreatedOnBetween(droneId,startDate,endDate);
-
     }
 }

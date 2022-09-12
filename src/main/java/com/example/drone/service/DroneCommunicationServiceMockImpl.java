@@ -2,7 +2,9 @@ package com.example.drone.service;
 
 import com.example.drone.contants.DroneState;
 import com.example.drone.model.Drone;
+import org.springframework.stereotype.Service;
 
+@Service
 public class DroneCommunicationServiceMockImpl  implements DroneCommunicationService {
     @Override
     public int getDronePercentage(Drone drone) {
@@ -11,7 +13,7 @@ public class DroneCommunicationServiceMockImpl  implements DroneCommunicationSer
 
     @Override
     public DroneState getDroneState(Drone drone) {
-        return null;
+        return  drone.getState();
     }
 
 

@@ -4,8 +4,10 @@ import com.example.drone.model.Delivery;
 import com.example.drone.model.DeliveryLoad;
 import com.example.drone.model.Drone;
 import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
+@Service
 
 public class DroneServiceImpl implements  DroneService{
     @Override
