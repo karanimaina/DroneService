@@ -1,4 +1,4 @@
-package com.example.drone.dto;
+package com.example.drone.resource.dto;
 
 import lombok.Data;
 

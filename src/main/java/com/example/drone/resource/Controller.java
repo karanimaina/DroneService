@@ -1,6 +1,7 @@
-package com.example.drone;
+package com.example.drone.resource;
 
-import com.example.drone.dto.LoadDroneDto;
+import com.example.drone.UniversalResponse;
+import com.example.drone.resource.dto.LoadDroneDto;
 import com.example.drone.model.Delivery;
 import com.example.drone.model.DeliveryLoad;
 import com.example.drone.model.Drone;
