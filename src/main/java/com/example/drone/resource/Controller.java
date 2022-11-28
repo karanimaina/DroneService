@@ -70,7 +70,6 @@ public class Controller {
             List<Drone> availableDrones= droneService.checkAvailableDrones (pageable);
             UniversalResponse response= UniversalResponse.builder()
                     .status (200)
-
                     .message ("Available drones")
 
                     .data (availableDrones)
