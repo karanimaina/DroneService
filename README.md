@@ -1,9 +1,8 @@
-# DroneService
-# BAKERY PRODUCT  REST API application
+# DRONE REST API application
 
-The REST API to the bakery product  application  is described below.
+The REST API to the Drone application  is described below.
 
-## Create a new product
+## Create a new Drone
 
 ### Request 
 
@@ -29,7 +28,7 @@ The REST API to the bakery product  application  is described below.
     "state":"IDLE":01.759+00:00
     Status: 201 Created
     Connection: keep-alive
-    Content-Type: application/json
+    Content-Type: application/jproductson
     Content-Length: 36
     
     {
@@ -47,7 +46,7 @@ The REST API to the bakery product  application  is described below.
 
 
 
-## Add product details to product
+## LOAD Drone
 ### Request
 
    `POST  http://localhost:8087/api/v1/dronecreate/`
@@ -88,7 +87,7 @@ The REST API to the bakery product  application  is described below.
 
 
 
-## Get All Products
+## Get All  Drones
 
 ### Request 
 
@@ -105,7 +104,7 @@ The REST API to the bakery product  application  is described below.
     
     {
     "status": 200
- "data": {
+    "data": {
     "id": 1,
     "serialNo":"123456",
     "model":"LightWeight",
