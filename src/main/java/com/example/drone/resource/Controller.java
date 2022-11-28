@@ -72,6 +72,7 @@ public class Controller {
                     .status (200)
 
                     .message ("Available drones")
+
                     .data (availableDrones)
                     .build();
             return ResponseEntity.ok ().body (response);
