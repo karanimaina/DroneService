@@ -75,7 +75,6 @@ public class Controller {
                     .build();
 
 
-
             return ResponseEntity.ok ().body (response);
         }).publishOn (Schedulers.boundedElastic ());
     }
