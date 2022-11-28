@@ -71,7 +71,6 @@ public class Controller {
             UniversalResponse response= UniversalResponse.builder()
                     .status (200)
                     .message ("Available drones")
-
                     .data (availableDrones)
                     .build();
             return ResponseEntity.ok ().body (response);
