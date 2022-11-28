@@ -68,8 +68,7 @@ public class Controller {
         return Mono.fromCallable (()-> {
             Pageable pageable= PageRequest.of (page,size);
             List<Drone> availableDrones= droneService.checkAvailableDrones (pageable);
-            UniversalResponse response= Uni
-            versalResponse.builder()
+            UniversalResponse response= Uni versalResponse.builder()
                     .status (200)
                     .message ("Available drones")
                     .data (availableDrones)
