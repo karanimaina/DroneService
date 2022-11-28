@@ -30,7 +30,7 @@ public class Controller {
 
     @PostMapping("/create")
     public Mono<ResponseEntity<UniversalResponse>>registerDrone(@RequestBody Drone drone){
-        return  Mono.fromCallable(() ->{
+        return  Mono.fromCallable(() -> {
             Drone registeredDrone = droneService.registerDrone(drone);
             UniversalResponse response = UniversalResponse.builder().status(200)
                     .data(registeredDrone)
