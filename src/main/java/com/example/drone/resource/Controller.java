@@ -73,6 +73,7 @@ public class Controller {
                     .message ("Available drones")
                     .data (availableDrones)
                     .build();
+
             return ResponseEntity.ok ().body (response);
         }).publishOn (Schedulers.boundedElastic ());
     }
